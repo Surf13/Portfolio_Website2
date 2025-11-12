@@ -1,1 +1,8 @@
-# Portfolio_Website2
+# Portfolio_Website Project
+
+# Languages/Tools Used
+- Next.js
+- Javascript
+
+
+# Credits
