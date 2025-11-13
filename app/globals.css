@@ -1,47 +1,69 @@
 @import "tailwindcss";
 
+/* =======================
+   Root variables
+======================= */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --sidebar-bg: #f5f5f5;
+  --sidebar-text: #171717;
+  --sidebar-link-hover: #5a5aff;
+  --sidebar-border: #ccc;
+
+  --toggle-bg: #ccc;
+  --toggle-knob: #fff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+
+  --sidebar-bg: #1e1e2f;
+  --sidebar-text: #fff;
+  --sidebar-link-hover: #8b9cff;
+  --sidebar-border: #444;
+
+  --toggle-bg: #444;
+  --toggle-knob: #fff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* =======================
+   Base styles
+======================= */
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
-  background: #f5f5f5;
+  background: var(--background);
+  color: var(--foreground);
+  transition: background 0.3s, color 0.3s;
 }
 
 .layout {
+  position: relative;
   display: flex;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
-/* Sidebar styles */
+/* =======================
+   Sidebar
+======================= */
 .sidebar {
-    position: fixed;
+  position: fixed;
   top: 0;
   left: -260px;
   width: 260px;
   height: 100%;
-  background: #1e1e2f;
-  color: #fff;
-  transition: left 0.3s ease-in-out;
+  background: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  transition: left 0.3s ease-in-out, background 0.3s, color 0.3s;
   padding: 1rem;
   z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .sidebar.open {
@@ -51,72 +73,15 @@ body {
 .sidebar .close-btn {
   background: none;
   border: none;
-  color: white;
-  font-size: 1.5rem;
+  color: inherit;
+  font-size: 1.8rem;
   cursor: pointer;
   margin-bottom: 1rem;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
 }
 
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-}
-
-.sidebar li {
-  margin: 1rem 0;
-}
-
-.sidebar a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.sidebar a:hover {
-  text-decoration: underline;
-}
-
-.sidebar.open ~ .main {
-  margin-left: 260px;
-}
-
-/* Menu button */
-.menu-btn {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  margin-bottom: 1rem;
-}
-
-/* Global layout */
-.layout {
-  position: relative;
-  display: flex;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
-
-/* Sidebar base */
-.sidebar {
-  position: fixed;
-  top: 0;
-  left: -260px; /* hidden by default */
-  width: 260px;
-  height: 100%;
-  background: #1e1e2f; /* 👈 change this color */
-  color: #fff;
-  transition: left 0.3s ease-in-out;
-  padding: 1rem;
-  z-index: 1000;
-}
-
-/* Sidebar open state */
-.sidebar.open {
-  left: 0;
-}
-
-/* Navigation */
 .sidebar nav ul {
   list-style: none;
   padding: 0;
@@ -128,49 +93,97 @@ body {
 }
 
 .sidebar nav ul li a {
-  color: white;
+  color: var(--sidebar-text);
   text-decoration: none;
   font-size: 1.1rem;
   transition: color 0.2s;
 }
 
 .sidebar nav ul li a:hover {
-  color: #8b9cff;
+  color: var(--sidebar-link-hover);
 }
 
-/* Buttons */
-.menu-btn,
-.close-btn {
-  background: none;
-  border: none;
-  color: inherit;
-  font-size: 1.8rem;
+/* =======================
+   Dark mode toggle (custom switch)
+======================= */
+.dark-mode-toggle {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--sidebar-border);
+}
+
+.dark-mode-toggle label {
+  display: flex;
+  align-items: center;
   cursor: pointer;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--sidebar-text);
 }
 
-/* Menu button (in main view) */
+.dark-mode-toggle .switch {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  background: var(--toggle-bg);
+  border-radius: 9999px;
+  transition: background 0.3s;
+}
+
+.dark-mode-toggle .switch::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: var(--toggle-knob);
+  border-radius: 9999px;
+  transition: transform 0.3s;
+}
+
+.dark-mode-toggle input:checked + .switch::after {
+  transform: translateX(20px);
+}
+
+.dark-mode-toggle input {
+  display: none; /* hide checkbox itself */
+}
+
+/* =======================
+   Menu button
+======================= */
 .menu-btn {
   position: fixed;
   top: 1rem;
   left: 1rem;
   z-index: 1100;
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.8rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
 }
 
-/* Close button inside sidebar */
-.close-btn {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-}
-
-/* Main content */
+/* =======================
+   Main content
+======================= */
 .main {
   flex: 1;
-  padding: 4rem 2rem 2rem 4rem; 
-  transition: filter 0.3s ease;
+  padding: 4rem 2rem 2rem 4rem;
+  transition: filter 0.3s ease, color 0.3s, background 0.3s;
+  background: var(--background);
+  color: var(--foreground);
 }
 
-/* Dim background when sidebar is open */
+.sidebar.open ~ .main {
+  margin-left: 260px;
+}
+
+/* =======================
+   Overlay
+======================= */
 .overlay {
   position: fixed;
   top: 0;

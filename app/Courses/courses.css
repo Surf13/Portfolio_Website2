@@ -1,0 +1,150 @@
+/* =======================
+   Root variables
+======================= */
+:root {
+  --bg: #f7f7f7;
+  --panel-bg: #ffffff;
+  --text-primary: #333;
+  --text-secondary: #555;
+  --accent: #2a2a72;
+  --accent-hover: #009ffd;
+  --filter-bg: #fff;
+  --filter-border: #aaa;
+  --filter-hover: #f0f0f0;
+}
+
+/* Dark mode variables */
+.dark {
+  --bg: #1e1e2f;
+  --panel-bg: #2a2a40;
+  --text-primary: #ededed;
+  --text-secondary: #ccc;
+  --accent: #8b9cff;
+  --accent-hover: #5a5aff;
+  --filter-bg: #2a2a40;
+  --filter-border: #555;
+  --filter-hover: #3a3a5a;
+}
+
+/* =======================
+   Courses page
+======================= */
+.courses-page {
+  padding: 2rem;
+  background: var(--bg);
+  color: var(--text-primary);
+  transition: background 0.3s, color 0.3s;
+}
+
+.courses-heading {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+/* =======================
+   Transcript button + viewer
+======================= */
+.transcript-toggle {
+  display: flex;
+  justify-content: center; 
+  margin-bottom: 1.5rem;
+}
+
+.transcript-btn {
+  font-weight: 600;
+}
+
+.transcript-viewer {
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  background: var(--panel-bg);
+}
+
+/* =======================
+   Filter buttons
+======================= */
+.courses-filters {
+  display: flex;
+  justify-content: center; 
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--filter-border);
+  border-radius: 5px;
+  background: var(--filter-bg);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover {
+  background: var(--filter-hover);
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* =======================
+   Course panels
+======================= */
+.courses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.course-panel {
+  display: block;
+  background: var(--panel-bg);
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, background 0.3s, color 0.3s;
+}
+
+.course-panel:hover {
+  transform: translateY(-3px);
+}
+
+.course-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--accent);
+  transition: color 0.2s;
+}
+
+.course-title:hover {
+  color: var(--accent-hover);
+}
+
+.course-desc {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+/* =======================
+   Responsive layout
+======================= */
+@media (max-width: 640px) {
+  .course-panel {
+    padding: 1rem;
+  }
+
+  .transcript-viewer iframe {
+    height: 400px;
+  }
+}

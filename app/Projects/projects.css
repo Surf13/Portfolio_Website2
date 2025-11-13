@@ -1,11 +1,45 @@
+/* =======================
+   Root variables
+======================= */
+:root {
+  --bg: #f7f7f7;              
+  --panel-bg: #ffffff;       
+  --text-primary: #333;
+  --text-secondary: #555;
+  --accent: #2a2a72;
+  --accent-hover: #009ffd;
+  --filter-bg: #fff;
+  --filter-border: #aaa;
+  --filter-hover: #f0f0f0;
+}
+
+/* Dark mode variables */
+.dark {
+  --bg: #1e1e2f;             
+  --panel-bg: #2a2a40;       
+  --text-primary: #ededed;
+  --text-secondary: #ccc;
+  --accent: #8b9cff;
+  --accent-hover: #5a5aff;
+  --filter-bg: #2a2a40;
+  --filter-border: #555;
+  --filter-hover: #3a3a5a;
+}
+
+/* =======================
+   Projects page
+======================= */
 .projects-page {
   padding: 2rem;
+  background: var(--bg);
+  color: var(--text-primary);
+  transition: background 0.3s, color 0.3s;
 }
 
 .projects-heading {
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: #333;
+  color: var(--text-primary);
 }
 
 /* Container for all panels */
@@ -19,11 +53,11 @@
 .project-panel {
   display: flex;
   align-items: stretch;
-  background: #f7f7f7;
+  background: var(--panel-bg);
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, background 0.3s, color 0.3s;
 }
 
 .project-panel:hover {
@@ -58,16 +92,16 @@
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #2a2a72;
+  color: var(--accent);
   transition: color 0.2s;
 }
 
 .project-title:hover {
-  color: #009ffd;
+  color: var(--accent-hover);
 }
 
 .project-desc {
-  color: #555;
+  color: var(--text-secondary);
   font-size: 1rem;
 }
 
@@ -95,19 +129,20 @@
 
 .filter-btn {
   padding: 0.5rem 1rem;
-  border: 1px solid #aaa;
+  border: 1px solid var(--filter-border);
   border-radius: 5px;
-  background: #fff;
+  background: var(--filter-bg);
+  color: var(--text-primary);
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .filter-btn:hover {
-  background: #f0f0f0;
+  background: var(--filter-hover);
 }
 
 .filter-btn.active {
-  background: #2a2a72;
+  background: var(--accent);
   color: #fff;
-  border-color: #2a2a72;
+  border-color: var(--accent);
 }
