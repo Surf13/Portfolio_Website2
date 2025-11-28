@@ -193,3 +193,13 @@ body {
   background: rgba(0, 0, 0, 0.5);
   z-index: 900;
 }
+/* =======================
+   Three.js (Skill Section)
+======================= */
+:root {
+  --skill-text-color: #222222;;  /* dark text in light mode */
+}
+
+.dark {
+  --skill-text-color: #ffffff;  /* white text in dark mode */
+}

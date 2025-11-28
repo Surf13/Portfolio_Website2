@@ -63,7 +63,7 @@ export default function ProjectsPage() {
   );
 }
 
-const projects = [
+export const projects = [
   {
     title: "Portfolio Website V1",
     description: "A personal site built with php.",
