@@ -73,18 +73,17 @@ export default function CoursesPage() {
 
         {/* Course list */}
         <div className="courses-list">
-            {filteredCourses.map((course) => (
-            <Link
-                key={course.title}
-                href={course.page}
-                className="course-panel"
+          {filteredCourses.map((course) => (
+            <div
+              key={course.title}
+              className="course-panel"
             >
-                <div className="course-content">
+              <div className="course-content">
                 <h2 className="course-title">{course.title}</h2>
                 <p className="course-desc">{course.description}</p>
-                </div>
-            </Link>
-            ))}
+              </div>
+            </div>
+          ))}
         </div>
         </div>
     );

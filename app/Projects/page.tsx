@@ -36,26 +36,37 @@ export default function ProjectsPage() {
         {filteredProjects.map((proj) => (
           <div key={proj.title} className="project-panel">
             {/* Left side: image → GitHub */}
-            <a
-              href={proj.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="project-image-link"
-            >
-              <Image
-                src={proj.image}
-                alt={proj.title}
-                width={200}
-                height={140}
-                className="project-image"
-              />
-            </a>
+            {proj.image && (
+              <a
+                href={proj.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-image-link"
+              >
+                <Image
+                  src={proj.image}
+                  alt={proj.title}
+                  width={200}
+                  height={140}
+                  className="project-image"
+                />
+              </a>
+            )}
+
 
             {/* Right side: title + description → internal project page */}
-            <Link href={proj.page} className="project-content">
-              <h2 className="project-title">{proj.title}</h2>
+            <div className="project-content">
+              <a
+                href={proj.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-title-link"
+              >
+                <h2 className="project-title">{proj.title}</h2>
+              </a>
+
               <p className="project-desc">{proj.description}</p>
-            </Link>
+            </div>
           </div>
         ))}
       </div>
@@ -67,7 +78,7 @@ export const projects = [
   {
     title: "Portfolio Website V1",
     description: "A personal site built with php.",
-    image: "/images/portfolio.png",
+    image: null,
     github: "https://github.com/Surf13/Portfolio_Website",
     page: "/projects/portfolio",
     tags: ["Coursework", "php"],
@@ -75,15 +86,15 @@ export const projects = [
   {
     title: "Portfolio Website V2",
     description: "A personal site built with Next.js and Tailwind CSS.",
-    image: "/images/portfolio.png",
-    github: "https://github.com/yourusername/portfolio",
+    image: null,
+    github: "https://github.com/Surf13/Portfolio_Website2",
     page: "/projects/portfolio",
     tags: ["Javascript"],
   },
   {
     title: "Checker Board",
     description: "A simple Checkerboard game for playing with your friends.",
-    image: "/images/chatbot.png",
+    image: "/images/Checker_board.jpg",
     github: "https://github.com/Surf13/Checker_Board",
     page: "/projects/Checker_Board",
     tags: ["C/C++"],
@@ -91,15 +102,15 @@ export const projects = [
   {
     title: "Earth Animation",
     description: "A basic 3D earth animation",
-    image: "/images/weather.png",
-    github: "https://github.com/yourusername/weather-dashboard",
+    image: null,
+    github: "https://github.com/Surf13/Earth_Animation",
     page: "/projects/weather-dashboard",
     tags: [ "Javascript"],
   },
   {
     title: "Interactive Gallery",
     description: "A basic music Gallery",
-    image: "/images/weather.png",
+    image: "/images/Music_Player.jpg",
     github: "https://github.com/Surf13/HackV5_Project",
     page: "/projects/weather-dashboard",
     tags: [ "Javascript"],
@@ -107,7 +118,7 @@ export const projects = [
   {
     title: "Reach The Castle",
     description: "A simple Single player game trying to cross the forest",
-    image: "/images/weather.png",
+    image: "/images/Reach_The_Castle.jpg",
     github: "https://github.com/Surf13/Reach-the-Castle",
     page: "/projects/weather-dashboard",
     tags: [ "Javascript"],
@@ -115,7 +126,7 @@ export const projects = [
   {
     title: "Matrix Calculator",
     description: "A basic Calculator for matrix math",
-    image: "/images/weather.png",
+    image: null,
     github: "https://github.com/Surf13/Matrix-Calculator",
     page: "/projects/weather-dashboard",
     tags: [ "Java"],
@@ -123,7 +134,7 @@ export const projects = [
   {
     title: "Basic Git",
     description: "A simple replica of git",
-    image: "/images/weather.png",
+    image: null,
     github: "https://github.com/Surf13/Basic_Git_Program",
     page: "/projects/weather-dashboard",
     tags: [ "C/C++"],
@@ -131,15 +142,15 @@ export const projects = [
   {
     title: "Capstone: VFD Firmware ",
     description: "processor firmware for a Variable frequency drive",
-    image: "/images/weather.png",
-    github: "https://github.com/Surf13/Basic_Git_Program",
+    image: "/images/Firmware_waveofrm.png",
+    github: "https://github.com/KyleSimm/Backup_Files",
     page: "/projects/weather-dashboard",
     tags: [ "C/C++", "Coursework"],
   },
    {
     title: "Bikestore ",
     description: "Bikestore Database project created in collabration with three other members.",
-    image: "/images/weather.png",
+    image: null,
     github: "https://github.com/eshwaran-krishnan/908-team2",
     page: "/projects/weather-dashboard",
     tags: [ "Java", "Coursework"],
@@ -147,7 +158,7 @@ export const projects = [
    {
     title: "Budget Tracker",
     description: "Budget Tracker Extension for Google Docs created in collabration with three other members. ",
-    image: "/images/weather.png",
+    image: null,
     github: "https://github.com/eshwaran-krishnan/908-team2-project3",
     page: "/projects/weather-dashboard",
     tags: [ "Javascript", "Coursework", "HTML"],
@@ -155,7 +166,7 @@ export const projects = [
    {
     title: "Single Cycle Processor",
     description: "single cycle ARM processor logic for implementing basic assembly code.",
-    image: "/images/weather.png",
+    image: null,
     github: "https://github.com/Surf13/Coursework_SingleCycleProcessor",
     page: "/projects/weather-dashboard",
     tags: [ "Verilog", "Coursework"],
