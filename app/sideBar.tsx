@@ -18,7 +18,7 @@ export default function Sidebar() {
     setDarkMode(prev => {
       const next = !prev;
       document.documentElement.classList.toggle("dark", next);
-      localStorage.setItem("darkMode", next);
+      localStorage.setItem("darkMode", next.toString());
       return next;
     });
   };
